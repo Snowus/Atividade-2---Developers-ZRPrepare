@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  mysqldb:
+    image: postgres
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - POSTGRES_USER=$MYSQLDB_USER
+      - POSTGRES_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - POSTGRES_DB=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    depends_on:
+      - mysqldb
+    build: ./
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER=$MYSQLDB_USER
+      - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - DB_NAME=$MYSQLDB_DATABASE
+      - DB_PORT=$MYSQLDB_DOCKER_PORT
+    stdin_open: true
+    tty: true
+volumes: 
+  db:
