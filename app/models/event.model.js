@@ -1,32 +1,32 @@
 module.exports = (sequelize, Sequelize) => {
-  const Event = sequelize.define("event", {
+  const Event = sequelize.define("events", {
     title: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     description: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     data: {
-      type: Sequelize.DATEONLY
+      type: Sequelize.STRING,
     },
     startAt: {
-      type: Sequelize.TIME
+      type: Sequelize.TIME,
     },
     endAt: {
-      type: Sequelize.TIME
+      type: Sequelize.TIME,
     },
     local: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     color: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     calendarID: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     published: {
-      type: Sequelize.BOOLEAN
-    }
+      type: Sequelize.BOOLEAN,
+    },
   });
 
   return Event;
