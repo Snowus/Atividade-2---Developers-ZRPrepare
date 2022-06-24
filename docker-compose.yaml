@@ -6,12 +6,12 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      - POSTGRES_USER=$POSTGRESDB_USER
-      - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
-      - POSTGRES_DB=$POSTGRES_DATABASE
-      - POSTGRES_TEST_DB=$POSTGRES_TEST_DB
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+      - POSTGRES_DB=$DB_NAME
+      - POSTGRES_TEST_DB=$DB_TEST_NAME
     ports:
-      - $POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT
+      - $POSTGRESDB_LOCAL_PORT:$DB_PORT
     volumes:
       - db:/var/lib/postgres
   app: &app
@@ -25,10 +25,10 @@ services:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     environment: &env
       DB_HOST: postgresdb
-      DB_USER: $POSTGRESDB_USER
-      DB_PASSWORD: $POSTGRESDB_ROOT_PASSWORD
-      DB_NAME: $POSTGRES_DATABASE
-      DB_PORT: $POSTGRESDB_DOCKER_PORT
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
+      DB_NAME: $DB_NAME
+      DB_PORT: $DB_PORT
     stdin_open: true
     tty: true
 
@@ -38,7 +38,7 @@ services:
     ports: []
     environment:
       <<: *env
-      DB_NAME: $POSTGRES_TEST_DATABASE
+      DB_TEST_NAME: $DB_TEST_NAME
       NODE_ENV: test
 volumes:
   db:

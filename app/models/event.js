@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Event = sequelize.define("events", {
+  const Event = sequelize.define("Event", {
     title: {
       type: Sequelize.STRING,
     },
@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     data: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATEONLY,
     },
     startAt: {
       type: Sequelize.TIME,

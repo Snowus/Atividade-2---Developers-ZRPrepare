@@ -20,7 +20,7 @@ module.exports = {
     ...defaultConfig,
   },
   test: {
-    DB: process.env.DB_NAME,
+    DB: process.env.DB_TEST_NAME,
     ...defaultConfig,
   },
 };
