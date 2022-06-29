@@ -9,9 +9,11 @@ describe("Events controller tests", () => {
         description: "tested 5",
         data: "2022/06/24",
       });
-
-      expect(res.statusCode).toEqual(200);
+      console.log(res);
+      expect(res.body).toEqual({});
+      // expect(res.statusCode).toEqual(200);
       // expect(res.body).toHaveProperty('title', 'test')
+      
     });
   });
 });
