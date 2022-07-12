@@ -4,7 +4,7 @@
   "description": "Node.js Rest Apis with Express, Sequelize & PostgreSQL",
   "main": "server.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test NODE_DOCKER_PORT=8081 jest --forceExit",
+    "test": "jest --forceExit",
     "dev": "cross-env NODE_ENV=development nodemon server.js"
   },
   "keywords": [
@@ -30,7 +30,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.18",
-    "sequelize-cli": "^6.4.1"
+    "sequelize-cli": "^6.4.1",
+    "sequelize-mock-v5": "^1.2.4"
   },
   "jest": {
     "testEnvironment": "node",
