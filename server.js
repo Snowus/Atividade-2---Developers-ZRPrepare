@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+const db = require("./app/models");
 
 const app = express();
 
@@ -24,6 +25,8 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/event.routes")(app);
+
+db.sync(() => console.log(`Banco de dados conectado: ${process.env.DB_NAME}`));
 
 // set port, listen for requests
 const PORT = process.env.NODE_DOCKER_PORT || 8080;

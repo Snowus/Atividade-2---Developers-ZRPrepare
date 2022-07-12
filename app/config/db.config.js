@@ -1,6 +1,7 @@
 require("dotenv").config();
 
-const defaultConfig = {
+module.exports = {
+  DB: process.env.DB_NAME,
   host: process.env.DB_HOST,
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -11,16 +12,5 @@ const defaultConfig = {
     min: 0,
     acquire: 30000,
     idle: 10000,
-  },
-};
-
-module.exports = {
-  development: {
-    DB: process.env.DB_NAME,
-    ...defaultConfig,
-  },
-  test: {
-    DB: process.env.DB_TEST_NAME,
-    ...defaultConfig,
   },
 };
