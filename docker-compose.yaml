@@ -15,7 +15,7 @@ services:
     volumes:
       - db:/var/lib/postgres
   app: &app
-    command: /bin/bash -c "npx sequelize-cli db:migrate"
+    command: /bin/bash -c "npm run test"
     depends_on:
       - postgresdb
     build: ./
