@@ -32,8 +32,6 @@ exports.create = (req, res) => {
     published: req.body.published ? req.body.published : false,
   };
 
-  console.log(event);
-
   // Save Event in the database
   Event.create(event)
     .then((data) => {
