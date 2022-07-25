@@ -1,7 +1,6 @@
 require("dotenv").config();
 
-module.exports = {
-  DB: process.env.DB_NAME,
+const defaultConfig = {
   host: process.env.DB_HOST,
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -12,5 +11,15 @@ module.exports = {
     min: 0,
     acquire: 30000,
     idle: 10000,
+  },
+};
+
+module.exports = {
+  development: {
+    DB: process.env.DB_NAME,
+    ...defaultConfig,
+  },
+  test: {
+    dialect: "sqlite",
   },
 };
