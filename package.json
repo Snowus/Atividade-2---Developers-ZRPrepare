@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --forceExit",
-    "dev": "cross-env NODE_ENV=development nodemon server.js"
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "lint:all": "eslint --ext .js",
+    "lint:all:fix": "eslint --ext .js --fix"
   },
   "keywords": [
     "nodejs",
@@ -30,6 +32,8 @@
     "supertest": "^6.2.3"
   },
   "devDependencies": {
+    "eslint": "^8.20.0",
+    "eslint-config-xo": "^0.41.0",
     "nodemon": "^2.0.18",
     "sequelize-cli": "^6.4.1",
     "sequelize-mock-v5": "^1.2.4"
